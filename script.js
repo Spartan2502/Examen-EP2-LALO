@@ -49,7 +49,18 @@ posicion.disabled = true;
 total.disabled = true;
 total2.disabled = true;
 
+// Recaptcha
+var recaptcha = element("recaptcha", "div", "recaptcha", "div")
+recaptcha.setAttribute("class", "g-recaptcha");
+recaptcha.setAttribute("data-sitekey", "6Ldj9QklAAAAABUX0jjkbqUaFMl7ZGaqhsrSRgc4");
+recaptcha.setAttribute("data-callback", "correctCaptcha");
+
+
+
+
 var formularios = []
+
+
 
 // form
 var FormContainer = document.createElement("div");
@@ -99,8 +110,11 @@ form.appendChild(ClearButton);
 var Enviar = document.createTextNode("Enviar");
 SendButton.appendChild(Enviar);
 form.appendChild(SendButton);
+form.appendChild(recaptcha);
 
-
+function correctCaptcha(){
+    alert("CORRECTO");
+}
 
 
 
@@ -229,12 +243,11 @@ SendButton.addEventListener("click", function () {
     SportsBox.checked = false;
     SeriesBox.checked = false;
     MoviesBox.checked = false;
-    TElements(i)
+// TElements(i)
 
 })
 
 NextButton.addEventListener("click", function () {
-    var formularios = JSON.parse(localStorage.getItem("formularios"));
     var i = 0;
     if (i < formularios.length) {
         ViewNameInput.value = formularios[i].name;
